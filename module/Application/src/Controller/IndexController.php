@@ -9,6 +9,7 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\ServiceManager\ServiceManager;
 
 class IndexController extends AbstractActionController
 {
@@ -17,7 +18,9 @@ class IndexController extends AbstractActionController
         //$dbAdapter = $this->getConfig();
         //var_dump($dbAdapter);
         //$isConnect = $dbAdapter->getDriver()->getConnection()->isConnected();
-        
+        $sm = new ServiceManager();
+        $db = $sm->getServiceLocator()->get('adapters');
+        echo $db;
         return new ViewModel();
     }
 }
