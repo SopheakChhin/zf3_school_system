@@ -14,6 +14,10 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        //$dbAdapter = $this->getConfig();
+        //var_dump($dbAdapter);
+        //$isConnect = $dbAdapter->getDriver()->getConnection()->isConnected();
+        
         return new ViewModel();
     }
 }

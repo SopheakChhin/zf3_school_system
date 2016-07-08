@@ -1,4 +1,6 @@
 <?php
+use Zend\Db\Adapter\AdapterAbstractServiceFactory;
+
 /**
  * Global Configuration Override
  *
@@ -13,4 +15,30 @@
 
 return [
     // ...
+    'db' => [
+        'adapters' => [
+            'Application\Db\WriteAdapter' => [
+                'driver' => 'Pdo',
+                'dsn'       => 'mysql:dbname=zf2_master_db;host=localhost',
+                'username'  => 'root',
+                'password'  =>  '',
+            ]
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            'Application\Db\WriteAdapter' => AdapterAbstractServiceFactory::class,
+        ],
+    ],
+    /* 'service_manager' => [
+        'factories' => [
+            'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory'
+        ]
+    ],
+    'static_salt' => '1A2B3C4E5FZYX0',
+    'php_settings' => [
+        'date.timezone' => 'UTC',
+        'memory_limit' => '128M',
+        'display_errors' =>'On'
+    ] */
 ];
