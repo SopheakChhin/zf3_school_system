@@ -18,8 +18,9 @@ return [
     'db' => [
         'adapters' => [
             'Application\Db\WriteAdapter' => [
-                'driver' => 'Pdo',
-                'dsn'       => 'mysql:dbname=zf2_master_db;host=localhost',
+                'driver' => 'Pdo_mysql',
+                'database' => 'zf2_master_db',
+                'host'  => 'localhost',
                 'username'  => 'root',
                 'password'  =>  '',
             ]
@@ -29,6 +30,9 @@ return [
         'factories' => [
             'Application\Db\WriteAdapter' => AdapterAbstractServiceFactory::class,
         ],
+        'aliases' => [
+            'db' => 'Application\Db\WriteAdapter',
+        ]
     ],
     /* 'service_manager' => [
         'factories' => [
