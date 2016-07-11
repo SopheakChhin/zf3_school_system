@@ -15,11 +15,17 @@ use Zend\Db\Adapter\AdapterAbstractServiceFactory;
 
 return [
     // ...
+    /* 'db' => [
+        'driver'    => 'Pdo',
+        'dsn'       => 'mysql:database=zf2_master_db,host=localhost',
+        'username'  => 'root',
+        'password'  =>  '',
+    ] */
     'db' => [
         'adapters' => [
             'Application\Db\WriteAdapter' => [
                 'driver' => 'Pdo_mysql',
-                'database' => 'zf2_master_db',
+                'database' => 'zf3_school_system',
                 'host'  => 'localhost',
                 'username'  => 'root',
                 'password'  =>  '',
@@ -34,15 +40,9 @@ return [
             'db' => 'Application\Db\WriteAdapter',
         ]
     ],
-    /* 'service_manager' => [
-        'factories' => [
-            'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory'
-        ]
-    ],
-    'static_salt' => '1A2B3C4E5FZYX0',
-    'php_settings' => [
+    'php_settings' => array(
         'date.timezone' => 'UTC',
         'memory_limit' => '128M',
         'display_errors' =>'On'
-    ] */
+    )
 ];
