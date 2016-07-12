@@ -1,5 +1,6 @@
 <?php
-use Zend\Db\Adapter\AdapterAbstractServiceFactory;
+//use Zend\Db\Adapter\AdapterAbstractServiceFactory;
+//use Zend\Db\Adapter\AdapterInterface;
 
 /**
  * Global Configuration Override
@@ -15,13 +16,14 @@ use Zend\Db\Adapter\AdapterAbstractServiceFactory;
 
 return [
     // ...
-    /* 'db' => [
-        'driver'    => 'Pdo',
-        'dsn'       => 'mysql:database=zf2_master_db,host=localhost',
+    'db' => [
+        'driver' => 'Pdo_mysql',
+        'database' => 'zf3_school_system',
+        'host'  => 'localhost',
         'username'  => 'root',
         'password'  =>  '',
-    ] */
-    'db' => [
+    ],
+    /* 'db' => [
         'adapters' => [
             'Application\Db\WriteAdapter' => [
                 'driver' => 'Pdo_mysql',
@@ -39,7 +41,7 @@ return [
         'aliases' => [
             'db' => 'Application\Db\WriteAdapter',
         ]
-    ],
+    ], */
     'php_settings' => array(
         'date.timezone' => 'UTC',
         'memory_limit' => '128M',
