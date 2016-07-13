@@ -1,8 +1,9 @@
 <?php
-/*
- * Date: 2016-07-11
- * Time: 11:14 AM
- * Author: Sopheak Chhin
+/**
+ * 
+ * @author SopheakChhin
+ * @date Jul 11, 2016
+ * @time 11:14:42 AM
  */
 namespace Album;
 

@@ -1,4 +1,10 @@
 <?php
+/**
+ * 
+ * @author SopheakChhin
+ * @date Jul 13, 2016
+ * @time 11:54:09 AM
+ */
 namespace Album\Form;
 
 use Zend\Form\Form;
@@ -28,6 +34,12 @@ class AlbumForm extends Form
                 'label' => 'Artist',
             ],
         ]);
+        
+        /* $this->add([
+            'name' => 'album_csrf',
+            
+        ]); */
+        
         $this->add([
             'name' => 'submit',
             'type' => 'submit',

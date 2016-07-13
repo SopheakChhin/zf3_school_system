@@ -11,6 +11,7 @@
  * This should be an array of module namespaces used in the application.
  */
 return [
+    'Zend\Paginator',
     'Zend\I18n',
     'Zend\InputFilter',
     'Zend\Filter',
@@ -19,6 +20,7 @@ return [
     'Zend\Db',
     'Zend\Router',
     'Zend\Validator',
-    'Application',
+    'Application',//======= system module ==========
     'Album',
+    'Blog',
 ];

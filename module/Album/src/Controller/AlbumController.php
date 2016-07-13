@@ -1,8 +1,9 @@
 <?php
-/*
- * Date: 2016-07-11
- * Time: 11:17
- * Author: Sopheak Chhin
+/**
+ * 
+ * @author SopheakChhin
+ * @date Jul 11, 2016
+ * @time 11:43:44 PM
  */
 
 namespace Album\Controller;
@@ -29,9 +30,21 @@ class AlbumController extends AbstractActionController
         //$adapter = $this->plugins->getServiceLocator()->get('AlbumTableGateway');
         //var_dump($adapter);
         /* $resultSet = $this->table->fetchAll();*/
-        return new ViewModel([
+        /* return new ViewModel([
             'albums' => $this->table->fetchAll(),
-        ]); 
+        ]);  */
+        
+        //Pagitor Result
+        $paginator = $this->table->fetchAll(true);
+        
+        $page = (int) $this->params()->fromQuery('page',1);
+        $page = ($page<1? 1 : $page);
+        $paginator->setCurrentPageNumber($page);
+        
+        // Set the number of items per page to 10:
+        $paginator->setItemCountPerPage(10);
+        
+        return new ViewModel(['paginator'=>$paginator]);
     }
 
     public function addAction()
