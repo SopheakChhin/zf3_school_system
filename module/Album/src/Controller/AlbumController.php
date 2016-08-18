@@ -33,8 +33,9 @@ class AlbumController extends AbstractActionController
         /* return new ViewModel([
             'albums' => $this->table->fetchAll(),
         ]);  */
-        
+        //$service = $this->PluginManager();
         //Pagitor Result
+
         $paginator = $this->table->fetchAll(true);
         
         $page = (int) $this->params()->fromQuery('page',1);

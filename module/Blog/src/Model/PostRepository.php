@@ -44,11 +44,11 @@ class PostRepository implements PostRepositoryInterface
     public function findAllPosts()
     {
         return array_map(function($post){
-            return new Post([
+            return new Post(
                 $post['title'],
                 $post['text'],
                 $post['id']
-            ]);
+            );
         }, $this->data);
     }
     
