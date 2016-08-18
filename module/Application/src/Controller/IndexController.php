@@ -23,6 +23,8 @@ class IndexController extends AbstractActionController
 	
     public function indexAction()
     {
+    	/* $myClass = new MyClass();
+    	$myClass->helloWorld(); */
     	$paginator = $this->table->fetchAll(true);
     	$page = (int) $this->params()->fromQuery('page',1);
     	$page = ($page<1? 1 : $page);

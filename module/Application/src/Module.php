@@ -8,11 +8,36 @@
 namespace Application;
 
 use Zend\Navigation\Navigation;
+use Zend\ModuleManager\ModuleManager;
+use Zend\ModuleManager\ModuleEvent;
+use Album\Model\AlbumTable;
+use Zend\Mvc\MvcEvent;
+use Zend\ServiceManager\ServiceManager;
+use Interop\Container\ContainerInterface;
+use lib\MyClass;
 
 class Module
 {
     const VERSION = '3.0.0dev';
 
+    public function init(ModuleManager $ModuleManager)
+    {
+    	$event = $ModuleManager->getEventManager();
+    	$event->attach(ModuleEvent::EVENT_MERGE_CONFIG, [$this, 'onMergeConfig']);
+    }
+    
+    public function onMergeConfig(ModuleEvent $e)
+    {
+    	$eventListener = $e->getConfigListener();
+    	$config = $eventListener->getMergedConfig(false);
+    	//var_dump($config['navigation']);exit;
+    	
+    	//print_r($config);exit;
+    	//$serviceManager = new ServiceManager();
+    	//$mvcEvent = MvcEvent::class;
+    	//$table = new AlbumTable($serviceManager->get(\Album\Model\AlbumTable::class));
+    }
+    
     public function getConfig()
     {
         return include __DIR__ . '/../config/module.config.php';
@@ -25,6 +50,7 @@ class Module
     				Controller\IndexController::class => function($container){
     					return new Controller\IndexController(
     								$container->get(\Album\Model\AlbumTable::class)
+    								//$container->getServiceConfig(Model\AlbumTable::class)
     							);
     				}
     		]
