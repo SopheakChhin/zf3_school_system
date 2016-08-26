@@ -11,11 +11,12 @@ use Zend\Router\Http\Segment;
 //use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
-    /* 'controllers' => [
+    'controllers' => [
         'factories' => [
-            Controller\AlbumController::class => InvokableFactory::class,
+            //Controller\AlbumController::class => InvokableFactory::class,
+            //Controller\PlaylistController::class => InvokableFactory::class,
         ],
-    ], */
+    ],
 
     // The following section is new and should be added to your file:
     'router' => [
@@ -34,6 +35,20 @@ return [
                     ],
                 ],
             ],
+        		'playlist' => [
+        				'type'    => Segment::class,
+        				'options' => [
+        						'route' => '/playlist[/:action[/:id]]',
+        						'constraints' => [
+        								'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+        								'id'     => '[0-9]+',
+        						],
+        						'defaults' => [
+        								'controller' => Controller\PlaylistController::class,
+        								'action'     => 'index',
+        						],
+        				],
+        		],
         ],
     ],
 

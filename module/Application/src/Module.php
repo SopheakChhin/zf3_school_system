@@ -23,6 +23,7 @@ class Module
     public function init(ModuleManager $ModuleManager)
     {
     	$event = $ModuleManager->getEventManager();
+
     	$event->attach(ModuleEvent::EVENT_MERGE_CONFIG, [$this, 'onMergeConfig']);
     }
     
@@ -30,6 +31,8 @@ class Module
     {
     	$eventListener = $e->getConfigListener();
     	$config = $eventListener->getMergedConfig(false);
+
+        //$eventListener->setMergedConfig();
     	//var_dump($config['navigation']);exit;
     	
     	//print_r($config);exit;

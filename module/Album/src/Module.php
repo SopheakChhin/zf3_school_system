@@ -54,7 +54,6 @@ class Module implements ConfigProviderInterface
                     return new Model\AlbumTable($tableGateway);
                 },
                 Model\AlbumTableGateway::class => function ($container){
-                    //$dbAdapter = $container->get('Application\Db\WriteAdapter');
                     $dbAdapter = $container->get(AdapterInterface::class);
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Album());
@@ -72,6 +71,9 @@ class Module implements ConfigProviderInterface
                     return new Controller\AlbumController(
                         $container->get(Model\AlbumTable::class)
                     );
+                },
+                Controller\PlaylistController::class => function($container) {
+                	return new Controller\PlaylistController($container);
                 },
             ],
         ];
